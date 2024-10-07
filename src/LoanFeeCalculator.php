@@ -6,12 +6,18 @@ use InvalidArgumentException;
 use PragmaGoTech\Interview\Model\BreakPoint;
 use PragmaGoTech\Interview\Model\LoanProposal;
 
+/**
+ * @author Michał Garbowski
+ */
 class LoanFeeCalculator implements FeeCalculator
 {
 
     private const string ERR_AMOUNT_DOESNT_FIT_STRUCTURE =
         'Requested amount could not be interpolated with the given fee structure.';
 
+    /**
+     * @return float The calculated total fee.
+     */
     public function calculate(LoanProposal $application): float
     {
         $loanTerm = $application->term();
