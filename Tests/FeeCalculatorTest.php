@@ -51,7 +51,11 @@ class FeeCalculatorTest extends TestCase
     ): void {
         $loanProposal = new LoanProposal($term, $amount);
         $fee = $this->calculator->calculate($loanProposal);
-        $this->assertEquals(0, ($fee%5), 'Calculated fee must be multiple of 5.');
+        $this->assertEquals(
+            0,
+            (($amount + $fee) % 5),
+            'Sum of amount and calculated fee must be a multiple of 5.'
+        );
         $this->assertEquals($expectedFee, $fee);
     }
 
